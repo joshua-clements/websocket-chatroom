@@ -5,7 +5,7 @@ A simple chat project with user creatable rooms using socket.io
 ```
 $ cd socket.io
 $ npm install
-$ npm start
+$ node src/index.js
 ```
 
 And point your browser to http://localhost:3000. Optionally, specify a port by supplying the PORT env variable.
