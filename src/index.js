@@ -4,7 +4,7 @@ const server = require('http').Server(app)
 const io = require('socket.io')(server)
 const path = require('path')
 
-const port = process.env.PORT || 8001
+const port = process.env.PORT || 3000
 const publicPath = path.join(__dirname, '../public')
 
 const {addUser, getUser, getUsersInRoom, getActiveRooms, removeUser} = require('./utils/users')
@@ -12,7 +12,7 @@ const {generateMessage} = require('./utils/messages')
 
 app.use(express.static(publicPath))
 
-server.listen(port, "219.88.179.87", () => {
+server.listen(port, () => {
     console.log(`server listening on port ${port}`)
 })
 
