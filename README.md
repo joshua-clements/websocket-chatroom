@@ -1,8 +1,6 @@
 # websocket-chatroom
 A simple chat application using node.js and socket.io that allows for the creation of multiple rooms.
 
-A simple chat project with user creatable rooms using socket.io
-
 ## How to use
 
 ```
