@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Project</title>
+   
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+<body> 
+    <div class="centered-form">
+        <div class="centered-form__box">
+            <form action="/chat.html">
+                <label for="username">Username: </label>
+                <input id="username" type="text" name="username" title="May contain letters, numbers, underscores, hyphens and periods." maxlength="15" required>
+
+                <label for="room">Create room: </label>
+                <input id="room" type="text" name="room" title="Enter a room name to create, or click on an open room below." maxlength="15" required>
+                <button>Join!</button>
+                <div id="rooms"></div>
+            </form>
+        </div>
+    </div>
+
+    <script src="socket.io/socket.io.js"></script>
+
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const username = urlParams.get('username')
+
+        var $roomList = document.querySelector('#rooms')
+        
+        const assignRoom = (room) => {
+            document.querySelector("#room").value = room
+        }
+
+        socket = io()
+
+        //if a user has left a room add URL username #username input feild
+        if(username) {
+            document.querySelector('#username').value = username
+        }
+
+        socket.on('activerooms', (rooms) => {
+
+            if(rooms[0]) {
+                $roomList.innerHTML = '<label>Open rooms:</label>'
+
+                $roomList.innerHTML += rooms.map((room) => {
+                    return `<button id="${room.room}" onclick="assignRoom(this.id)">${room.room} (${room.count})</button> <br />`
+                }).join(' ')
+            } else {
+                $roomList.innerHTML = ' '
+            } 
+        })
+    </script>
+</body>
+</html>

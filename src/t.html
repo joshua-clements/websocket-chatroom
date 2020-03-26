@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to get a new array with the full name of each person in the array.</p>
+<button onclick="myFunction()">Try it</button>
+
+<p>New array: <span id="demo"></span></p>
+
+<script>
+var persons = [
+  {firstname : "Malcom", lastname: "Reynolds"},
+  {firstname : "Kaylee", lastname: "Frye"},
+  {firstname : "Jayne", lastname: "Cobb"}
+];
+  i = 1,
+  obj = {
+    ['i' + i]: i
+  };
+
+function getFullName(item) {
+  var fullname = {['fullname']:[item.firstname,item.lastname].join(" ")};
+  return JSON.stringify(fullname);
+}
+
+function myFunction() {
+  document.getElementById("demo").innerHTML = persons.map(getFullName);
+}
+</script>
+
+</body>
+</html>

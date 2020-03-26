@@ -1,0 +1,19 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "description": "A chat application example.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon -L src/index.js"
+  },
+  "author": "Joshua Clements",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "faker": "^4.1.0",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
